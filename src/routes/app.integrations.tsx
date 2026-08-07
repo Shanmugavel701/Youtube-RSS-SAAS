@@ -33,10 +33,8 @@ function IntegrationsPage() {
       />
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {INTEGRATIONS.map((i) => {
-          const name = typeof i === "string" ? i : i.name;
-          const blurb =
-            typeof i === "string" ? "Push summaries, alerts, and reports automatically." : i.blurb;
+        {INTEGRATIONS.map((name) => {
+          const blurb = "Push summaries, alerts, and reports into your workflow automatically.";
           const isOn = connected.includes(name);
           return (
             <div key={name} className="card-lift flex flex-col rounded-2xl border border-border bg-card p-5 shadow-soft">
