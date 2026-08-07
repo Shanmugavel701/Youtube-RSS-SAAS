@@ -18,8 +18,10 @@ import { Route as SignupRouteImport } from './routes/signup'
 import { Route as VerifyEmailRouteImport } from './routes/verify-email'
 import { Route as AppIndexRouteImport } from './routes/app.index'
 import { Route as AppAlertsRouteImport } from './routes/app.alerts'
+import { Route as AppAutomationsRouteImport } from './routes/app.automations'
 import { Route as AppChannelsRouteImport } from './routes/app.channels'
 import { Route as AppCompetitorsRouteImport } from './routes/app.competitors'
+import { Route as AppKnowledgeRouteImport } from './routes/app.knowledge'
 import { Route as AppReportsRouteImport } from './routes/app.reports'
 import { Route as AppSearchRouteImport } from './routes/app.search'
 import { Route as AppVideosRouteImport } from './routes/app.videos'
@@ -69,6 +71,11 @@ const AppAlertsRoute = AppAlertsRouteImport.update({
   path: '/alerts',
   getParentRoute: () => AppRoute,
 } as any)
+const AppAutomationsRoute = AppAutomationsRouteImport.update({
+  id: '/automations',
+  path: '/automations',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppChannelsRoute = AppChannelsRouteImport.update({
   id: '/channels',
   path: '/channels',
@@ -77,6 +84,11 @@ const AppChannelsRoute = AppChannelsRouteImport.update({
 const AppCompetitorsRoute = AppCompetitorsRouteImport.update({
   id: '/competitors',
   path: '/competitors',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppKnowledgeRoute = AppKnowledgeRouteImport.update({
+  id: '/knowledge',
+  path: '/knowledge',
   getParentRoute: () => AppRoute,
 } as any)
 const AppReportsRoute = AppReportsRouteImport.update({
@@ -104,8 +116,10 @@ export interface FileRoutesByFullPath {
   '/signup': typeof SignupRoute
   '/verify-email': typeof VerifyEmailRoute
   '/app/alerts': typeof AppAlertsRoute
+  '/app/automations': typeof AppAutomationsRoute
   '/app/channels': typeof AppChannelsRoute
   '/app/competitors': typeof AppCompetitorsRoute
+  '/app/knowledge': typeof AppKnowledgeRoute
   '/app/reports': typeof AppReportsRoute
   '/app/search': typeof AppSearchRoute
   '/app/videos': typeof AppVideosRoute
@@ -119,8 +133,10 @@ export interface FileRoutesByTo {
   '/signup': typeof SignupRoute
   '/verify-email': typeof VerifyEmailRoute
   '/app/alerts': typeof AppAlertsRoute
+  '/app/automations': typeof AppAutomationsRoute
   '/app/channels': typeof AppChannelsRoute
   '/app/competitors': typeof AppCompetitorsRoute
+  '/app/knowledge': typeof AppKnowledgeRoute
   '/app/reports': typeof AppReportsRoute
   '/app/search': typeof AppSearchRoute
   '/app/videos': typeof AppVideosRoute
@@ -136,8 +152,10 @@ export interface FileRoutesById {
   '/signup': typeof SignupRoute
   '/verify-email': typeof VerifyEmailRoute
   '/app/alerts': typeof AppAlertsRoute
+  '/app/automations': typeof AppAutomationsRoute
   '/app/channels': typeof AppChannelsRoute
   '/app/competitors': typeof AppCompetitorsRoute
+  '/app/knowledge': typeof AppKnowledgeRoute
   '/app/reports': typeof AppReportsRoute
   '/app/search': typeof AppSearchRoute
   '/app/videos': typeof AppVideosRoute
@@ -154,8 +172,10 @@ export interface FileRouteTypes {
     | '/signup'
     | '/verify-email'
     | '/app/alerts'
+    | '/app/automations'
     | '/app/channels'
     | '/app/competitors'
+    | '/app/knowledge'
     | '/app/reports'
     | '/app/search'
     | '/app/videos'
@@ -169,8 +189,10 @@ export interface FileRouteTypes {
     | '/signup'
     | '/verify-email'
     | '/app/alerts'
+    | '/app/automations'
     | '/app/channels'
     | '/app/competitors'
+    | '/app/knowledge'
     | '/app/reports'
     | '/app/search'
     | '/app/videos'
@@ -185,8 +207,10 @@ export interface FileRouteTypes {
     | '/signup'
     | '/verify-email'
     | '/app/alerts'
+    | '/app/automations'
     | '/app/channels'
     | '/app/competitors'
+    | '/app/knowledge'
     | '/app/reports'
     | '/app/search'
     | '/app/videos'
@@ -268,6 +292,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppAlertsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/automations': {
+      id: '/app/automations'
+      path: '/automations'
+      fullPath: '/app/automations'
+      preLoaderRoute: typeof AppAutomationsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/channels': {
       id: '/app/channels'
       path: '/channels'
@@ -280,6 +311,13 @@ declare module '@tanstack/react-router' {
       path: '/competitors'
       fullPath: '/app/competitors'
       preLoaderRoute: typeof AppCompetitorsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/knowledge': {
+      id: '/app/knowledge'
+      path: '/knowledge'
+      fullPath: '/app/knowledge'
+      preLoaderRoute: typeof AppKnowledgeRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/reports': {
@@ -308,8 +346,10 @@ declare module '@tanstack/react-router' {
 
 interface AppRouteChildren {
   AppAlertsRoute: typeof AppAlertsRoute
+  AppAutomationsRoute: typeof AppAutomationsRoute
   AppChannelsRoute: typeof AppChannelsRoute
   AppCompetitorsRoute: typeof AppCompetitorsRoute
+  AppKnowledgeRoute: typeof AppKnowledgeRoute
   AppReportsRoute: typeof AppReportsRoute
   AppSearchRoute: typeof AppSearchRoute
   AppVideosRoute: typeof AppVideosRoute
@@ -318,8 +358,10 @@ interface AppRouteChildren {
 
 const AppRouteChildren: AppRouteChildren = {
   AppAlertsRoute: AppAlertsRoute,
+  AppAutomationsRoute: AppAutomationsRoute,
   AppChannelsRoute: AppChannelsRoute,
   AppCompetitorsRoute: AppCompetitorsRoute,
+  AppKnowledgeRoute: AppKnowledgeRoute,
   AppReportsRoute: AppReportsRoute,
   AppSearchRoute: AppSearchRoute,
   AppVideosRoute: AppVideosRoute,
