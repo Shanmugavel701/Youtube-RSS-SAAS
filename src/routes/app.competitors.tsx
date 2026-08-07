@@ -84,7 +84,7 @@ function CompetitorsPage() {
                 <div className="h-full rounded-full bg-gradient-brand" style={{ width: `${c.share * 2.4}%` }} />
               </div>
               <Badge variant="secondary" className="mt-4 rounded-full text-xs">
-                {c.sentiment} tone
+                Sentiment {c.sentiment}/100
               </Badge>
             </div>
           );
@@ -99,7 +99,7 @@ function CompetitorsPage() {
             <ResponsiveContainer width="100%" height="100%">
               <RadarChart data={RADAR_DATA}>
                 <PolarGrid stroke="var(--color-border)" />
-                <PolarAngleAxis dataKey="dimension" tick={{ fontSize: 12, fill: "var(--color-muted-foreground)" }} />
+                <PolarAngleAxis dataKey="axis" tick={{ fontSize: 12, fill: "var(--color-muted-foreground)" }} />
                 <PolarRadiusAxis tick={false} axisLine={false} />
                 <Tooltip contentStyle={tooltipStyle} />
                 <Radar
@@ -111,7 +111,7 @@ function CompetitorsPage() {
                 />
                 <Radar
                   name="Market avg"
-                  dataKey="market"
+                  dataKey="them"
                   stroke="var(--color-chart-2)"
                   fill="var(--color-chart-2)"
                   fillOpacity={0.18}
