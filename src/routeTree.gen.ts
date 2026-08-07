@@ -18,9 +18,12 @@ import { Route as SignupRouteImport } from './routes/signup'
 import { Route as VerifyEmailRouteImport } from './routes/verify-email'
 import { Route as AppIndexRouteImport } from './routes/app.index'
 import { Route as AppAlertsRouteImport } from './routes/app.alerts'
+import { Route as AppApiRouteImport } from './routes/app.api'
 import { Route as AppAutomationsRouteImport } from './routes/app.automations'
+import { Route as AppBillingRouteImport } from './routes/app.billing'
 import { Route as AppChannelsRouteImport } from './routes/app.channels'
 import { Route as AppCompetitorsRouteImport } from './routes/app.competitors'
+import { Route as AppIntegrationsRouteImport } from './routes/app.integrations'
 import { Route as AppKnowledgeRouteImport } from './routes/app.knowledge'
 import { Route as AppReportsRouteImport } from './routes/app.reports'
 import { Route as AppSearchRouteImport } from './routes/app.search'
@@ -71,9 +74,19 @@ const AppAlertsRoute = AppAlertsRouteImport.update({
   path: '/alerts',
   getParentRoute: () => AppRoute,
 } as any)
+const AppApiRoute = AppApiRouteImport.update({
+  id: '/api',
+  path: '/api',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppAutomationsRoute = AppAutomationsRouteImport.update({
   id: '/automations',
   path: '/automations',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppBillingRoute = AppBillingRouteImport.update({
+  id: '/billing',
+  path: '/billing',
   getParentRoute: () => AppRoute,
 } as any)
 const AppChannelsRoute = AppChannelsRouteImport.update({
@@ -84,6 +97,11 @@ const AppChannelsRoute = AppChannelsRouteImport.update({
 const AppCompetitorsRoute = AppCompetitorsRouteImport.update({
   id: '/competitors',
   path: '/competitors',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppIntegrationsRoute = AppIntegrationsRouteImport.update({
+  id: '/integrations',
+  path: '/integrations',
   getParentRoute: () => AppRoute,
 } as any)
 const AppKnowledgeRoute = AppKnowledgeRouteImport.update({
@@ -116,9 +134,12 @@ export interface FileRoutesByFullPath {
   '/signup': typeof SignupRoute
   '/verify-email': typeof VerifyEmailRoute
   '/app/alerts': typeof AppAlertsRoute
+  '/app/api': typeof AppApiRoute
   '/app/automations': typeof AppAutomationsRoute
+  '/app/billing': typeof AppBillingRoute
   '/app/channels': typeof AppChannelsRoute
   '/app/competitors': typeof AppCompetitorsRoute
+  '/app/integrations': typeof AppIntegrationsRoute
   '/app/knowledge': typeof AppKnowledgeRoute
   '/app/reports': typeof AppReportsRoute
   '/app/search': typeof AppSearchRoute
@@ -133,9 +154,12 @@ export interface FileRoutesByTo {
   '/signup': typeof SignupRoute
   '/verify-email': typeof VerifyEmailRoute
   '/app/alerts': typeof AppAlertsRoute
+  '/app/api': typeof AppApiRoute
   '/app/automations': typeof AppAutomationsRoute
+  '/app/billing': typeof AppBillingRoute
   '/app/channels': typeof AppChannelsRoute
   '/app/competitors': typeof AppCompetitorsRoute
+  '/app/integrations': typeof AppIntegrationsRoute
   '/app/knowledge': typeof AppKnowledgeRoute
   '/app/reports': typeof AppReportsRoute
   '/app/search': typeof AppSearchRoute
@@ -152,9 +176,12 @@ export interface FileRoutesById {
   '/signup': typeof SignupRoute
   '/verify-email': typeof VerifyEmailRoute
   '/app/alerts': typeof AppAlertsRoute
+  '/app/api': typeof AppApiRoute
   '/app/automations': typeof AppAutomationsRoute
+  '/app/billing': typeof AppBillingRoute
   '/app/channels': typeof AppChannelsRoute
   '/app/competitors': typeof AppCompetitorsRoute
+  '/app/integrations': typeof AppIntegrationsRoute
   '/app/knowledge': typeof AppKnowledgeRoute
   '/app/reports': typeof AppReportsRoute
   '/app/search': typeof AppSearchRoute
@@ -172,9 +199,12 @@ export interface FileRouteTypes {
     | '/signup'
     | '/verify-email'
     | '/app/alerts'
+    | '/app/api'
     | '/app/automations'
+    | '/app/billing'
     | '/app/channels'
     | '/app/competitors'
+    | '/app/integrations'
     | '/app/knowledge'
     | '/app/reports'
     | '/app/search'
@@ -189,9 +219,12 @@ export interface FileRouteTypes {
     | '/signup'
     | '/verify-email'
     | '/app/alerts'
+    | '/app/api'
     | '/app/automations'
+    | '/app/billing'
     | '/app/channels'
     | '/app/competitors'
+    | '/app/integrations'
     | '/app/knowledge'
     | '/app/reports'
     | '/app/search'
@@ -207,9 +240,12 @@ export interface FileRouteTypes {
     | '/signup'
     | '/verify-email'
     | '/app/alerts'
+    | '/app/api'
     | '/app/automations'
+    | '/app/billing'
     | '/app/channels'
     | '/app/competitors'
+    | '/app/integrations'
     | '/app/knowledge'
     | '/app/reports'
     | '/app/search'
@@ -292,11 +328,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppAlertsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/api': {
+      id: '/app/api'
+      path: '/api'
+      fullPath: '/app/api'
+      preLoaderRoute: typeof AppApiRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/automations': {
       id: '/app/automations'
       path: '/automations'
       fullPath: '/app/automations'
       preLoaderRoute: typeof AppAutomationsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/billing': {
+      id: '/app/billing'
+      path: '/billing'
+      fullPath: '/app/billing'
+      preLoaderRoute: typeof AppBillingRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/channels': {
@@ -311,6 +361,13 @@ declare module '@tanstack/react-router' {
       path: '/competitors'
       fullPath: '/app/competitors'
       preLoaderRoute: typeof AppCompetitorsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/integrations': {
+      id: '/app/integrations'
+      path: '/integrations'
+      fullPath: '/app/integrations'
+      preLoaderRoute: typeof AppIntegrationsRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/knowledge': {
@@ -346,9 +403,12 @@ declare module '@tanstack/react-router' {
 
 interface AppRouteChildren {
   AppAlertsRoute: typeof AppAlertsRoute
+  AppApiRoute: typeof AppApiRoute
   AppAutomationsRoute: typeof AppAutomationsRoute
+  AppBillingRoute: typeof AppBillingRoute
   AppChannelsRoute: typeof AppChannelsRoute
   AppCompetitorsRoute: typeof AppCompetitorsRoute
+  AppIntegrationsRoute: typeof AppIntegrationsRoute
   AppKnowledgeRoute: typeof AppKnowledgeRoute
   AppReportsRoute: typeof AppReportsRoute
   AppSearchRoute: typeof AppSearchRoute
@@ -358,9 +418,12 @@ interface AppRouteChildren {
 
 const AppRouteChildren: AppRouteChildren = {
   AppAlertsRoute: AppAlertsRoute,
+  AppApiRoute: AppApiRoute,
   AppAutomationsRoute: AppAutomationsRoute,
+  AppBillingRoute: AppBillingRoute,
   AppChannelsRoute: AppChannelsRoute,
   AppCompetitorsRoute: AppCompetitorsRoute,
+  AppIntegrationsRoute: AppIntegrationsRoute,
   AppKnowledgeRoute: AppKnowledgeRoute,
   AppReportsRoute: AppReportsRoute,
   AppSearchRoute: AppSearchRoute,
