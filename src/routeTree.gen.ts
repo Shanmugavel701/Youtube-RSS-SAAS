@@ -18,6 +18,8 @@ import { Route as SignupRouteImport } from './routes/signup'
 import { Route as VerifyEmailRouteImport } from './routes/verify-email'
 import { Route as AppIndexRouteImport } from './routes/app.index'
 import { Route as AppChannelsRouteImport } from './routes/app.channels'
+import { Route as AppSearchRouteImport } from './routes/app.search'
+import { Route as AppVideosRouteImport } from './routes/app.videos'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -64,6 +66,16 @@ const AppChannelsRoute = AppChannelsRouteImport.update({
   path: '/channels',
   getParentRoute: () => AppRoute,
 } as any)
+const AppSearchRoute = AppSearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppVideosRoute = AppVideosRouteImport.update({
+  id: '/videos',
+  path: '/videos',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -74,6 +86,8 @@ export interface FileRoutesByFullPath {
   '/signup': typeof SignupRoute
   '/verify-email': typeof VerifyEmailRoute
   '/app/channels': typeof AppChannelsRoute
+  '/app/search': typeof AppSearchRoute
+  '/app/videos': typeof AppVideosRoute
   '/app/': typeof AppIndexRoute
 }
 export interface FileRoutesByTo {
@@ -84,6 +98,8 @@ export interface FileRoutesByTo {
   '/signup': typeof SignupRoute
   '/verify-email': typeof VerifyEmailRoute
   '/app/channels': typeof AppChannelsRoute
+  '/app/search': typeof AppSearchRoute
+  '/app/videos': typeof AppVideosRoute
   '/app': typeof AppIndexRoute
 }
 export interface FileRoutesById {
@@ -96,6 +112,8 @@ export interface FileRoutesById {
   '/signup': typeof SignupRoute
   '/verify-email': typeof VerifyEmailRoute
   '/app/channels': typeof AppChannelsRoute
+  '/app/search': typeof AppSearchRoute
+  '/app/videos': typeof AppVideosRoute
   '/app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
@@ -109,6 +127,8 @@ export interface FileRouteTypes {
     | '/signup'
     | '/verify-email'
     | '/app/channels'
+    | '/app/search'
+    | '/app/videos'
     | '/app/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -119,6 +139,8 @@ export interface FileRouteTypes {
     | '/signup'
     | '/verify-email'
     | '/app/channels'
+    | '/app/search'
+    | '/app/videos'
     | '/app'
   id:
     | '__root__'
@@ -130,6 +152,8 @@ export interface FileRouteTypes {
     | '/signup'
     | '/verify-email'
     | '/app/channels'
+    | '/app/search'
+    | '/app/videos'
     | '/app/'
   fileRoutesById: FileRoutesById
 }
@@ -208,16 +232,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppChannelsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/search': {
+      id: '/app/search'
+      path: '/search'
+      fullPath: '/app/search'
+      preLoaderRoute: typeof AppSearchRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/videos': {
+      id: '/app/videos'
+      path: '/videos'
+      fullPath: '/app/videos'
+      preLoaderRoute: typeof AppVideosRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
 interface AppRouteChildren {
   AppChannelsRoute: typeof AppChannelsRoute
+  AppSearchRoute: typeof AppSearchRoute
+  AppVideosRoute: typeof AppVideosRoute
   AppIndexRoute: typeof AppIndexRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
   AppChannelsRoute: AppChannelsRoute,
+  AppSearchRoute: AppSearchRoute,
+  AppVideosRoute: AppVideosRoute,
   AppIndexRoute: AppIndexRoute,
 }
 

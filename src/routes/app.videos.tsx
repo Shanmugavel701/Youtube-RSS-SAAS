@@ -46,8 +46,8 @@ const GENERATORS = [
 ];
 
 function VideosPage() {
-  const [activeId, setActiveId] = useState(VIDEOS[0].id);
-  const active = VIDEOS.find((v) => v.id === activeId)!;
+  const [activeId, setActiveId] = useState(VIDEOS[0]!.id);
+  const active = VIDEOS.find((v) => v.id === activeId) ?? VIDEOS[0]!;
 
   return (
     <div className="space-y-6">
