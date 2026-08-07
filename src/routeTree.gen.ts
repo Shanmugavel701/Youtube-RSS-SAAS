@@ -17,8 +17,10 @@ import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as VerifyEmailRouteImport } from './routes/verify-email'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppAlertsRouteImport } from './routes/app.alerts'
 import { Route as AppChannelsRouteImport } from './routes/app.channels'
 import { Route as AppCompetitorsRouteImport } from './routes/app.competitors'
+import { Route as AppReportsRouteImport } from './routes/app.reports'
 import { Route as AppSearchRouteImport } from './routes/app.search'
 import { Route as AppVideosRouteImport } from './routes/app.videos'
 
@@ -62,6 +64,11 @@ const AppIndexRoute = AppIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AppRoute,
 } as any)
+const AppAlertsRoute = AppAlertsRouteImport.update({
+  id: '/alerts',
+  path: '/alerts',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppChannelsRoute = AppChannelsRouteImport.update({
   id: '/channels',
   path: '/channels',
@@ -70,6 +77,11 @@ const AppChannelsRoute = AppChannelsRouteImport.update({
 const AppCompetitorsRoute = AppCompetitorsRouteImport.update({
   id: '/competitors',
   path: '/competitors',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppReportsRoute = AppReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
   getParentRoute: () => AppRoute,
 } as any)
 const AppSearchRoute = AppSearchRouteImport.update({
@@ -91,8 +103,10 @@ export interface FileRoutesByFullPath {
   '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
   '/verify-email': typeof VerifyEmailRoute
+  '/app/alerts': typeof AppAlertsRoute
   '/app/channels': typeof AppChannelsRoute
   '/app/competitors': typeof AppCompetitorsRoute
+  '/app/reports': typeof AppReportsRoute
   '/app/search': typeof AppSearchRoute
   '/app/videos': typeof AppVideosRoute
   '/app/': typeof AppIndexRoute
@@ -104,8 +118,10 @@ export interface FileRoutesByTo {
   '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
   '/verify-email': typeof VerifyEmailRoute
+  '/app/alerts': typeof AppAlertsRoute
   '/app/channels': typeof AppChannelsRoute
   '/app/competitors': typeof AppCompetitorsRoute
+  '/app/reports': typeof AppReportsRoute
   '/app/search': typeof AppSearchRoute
   '/app/videos': typeof AppVideosRoute
   '/app': typeof AppIndexRoute
@@ -119,8 +135,10 @@ export interface FileRoutesById {
   '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
   '/verify-email': typeof VerifyEmailRoute
+  '/app/alerts': typeof AppAlertsRoute
   '/app/channels': typeof AppChannelsRoute
   '/app/competitors': typeof AppCompetitorsRoute
+  '/app/reports': typeof AppReportsRoute
   '/app/search': typeof AppSearchRoute
   '/app/videos': typeof AppVideosRoute
   '/app/': typeof AppIndexRoute
@@ -135,8 +153,10 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/signup'
     | '/verify-email'
+    | '/app/alerts'
     | '/app/channels'
     | '/app/competitors'
+    | '/app/reports'
     | '/app/search'
     | '/app/videos'
     | '/app/'
@@ -148,8 +168,10 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/signup'
     | '/verify-email'
+    | '/app/alerts'
     | '/app/channels'
     | '/app/competitors'
+    | '/app/reports'
     | '/app/search'
     | '/app/videos'
     | '/app'
@@ -162,8 +184,10 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/signup'
     | '/verify-email'
+    | '/app/alerts'
     | '/app/channels'
     | '/app/competitors'
+    | '/app/reports'
     | '/app/search'
     | '/app/videos'
     | '/app/'
@@ -237,6 +261,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/alerts': {
+      id: '/app/alerts'
+      path: '/alerts'
+      fullPath: '/app/alerts'
+      preLoaderRoute: typeof AppAlertsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/channels': {
       id: '/app/channels'
       path: '/channels'
@@ -249,6 +280,13 @@ declare module '@tanstack/react-router' {
       path: '/competitors'
       fullPath: '/app/competitors'
       preLoaderRoute: typeof AppCompetitorsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/reports': {
+      id: '/app/reports'
+      path: '/reports'
+      fullPath: '/app/reports'
+      preLoaderRoute: typeof AppReportsRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/search': {
@@ -269,16 +307,20 @@ declare module '@tanstack/react-router' {
 }
 
 interface AppRouteChildren {
+  AppAlertsRoute: typeof AppAlertsRoute
   AppChannelsRoute: typeof AppChannelsRoute
   AppCompetitorsRoute: typeof AppCompetitorsRoute
+  AppReportsRoute: typeof AppReportsRoute
   AppSearchRoute: typeof AppSearchRoute
   AppVideosRoute: typeof AppVideosRoute
   AppIndexRoute: typeof AppIndexRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppAlertsRoute: AppAlertsRoute,
   AppChannelsRoute: AppChannelsRoute,
   AppCompetitorsRoute: AppCompetitorsRoute,
+  AppReportsRoute: AppReportsRoute,
   AppSearchRoute: AppSearchRoute,
   AppVideosRoute: AppVideosRoute,
   AppIndexRoute: AppIndexRoute,
