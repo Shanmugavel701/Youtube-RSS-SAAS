@@ -17,16 +17,19 @@ import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as VerifyEmailRouteImport } from './routes/verify-email'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppAdminRouteImport } from './routes/app.admin'
 import { Route as AppAlertsRouteImport } from './routes/app.alerts'
 import { Route as AppApiRouteImport } from './routes/app.api'
 import { Route as AppAutomationsRouteImport } from './routes/app.automations'
 import { Route as AppBillingRouteImport } from './routes/app.billing'
 import { Route as AppChannelsRouteImport } from './routes/app.channels'
 import { Route as AppCompetitorsRouteImport } from './routes/app.competitors'
+import { Route as AppHelpRouteImport } from './routes/app.help'
 import { Route as AppIntegrationsRouteImport } from './routes/app.integrations'
 import { Route as AppKnowledgeRouteImport } from './routes/app.knowledge'
 import { Route as AppReportsRouteImport } from './routes/app.reports'
 import { Route as AppSearchRouteImport } from './routes/app.search'
+import { Route as AppSettingsRouteImport } from './routes/app.settings'
 import { Route as AppVideosRouteImport } from './routes/app.videos'
 
 const IndexRoute = IndexRouteImport.update({
@@ -69,6 +72,11 @@ const AppIndexRoute = AppIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AppRoute,
 } as any)
+const AppAdminRoute = AppAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppAlertsRoute = AppAlertsRouteImport.update({
   id: '/alerts',
   path: '/alerts',
@@ -99,6 +107,11 @@ const AppCompetitorsRoute = AppCompetitorsRouteImport.update({
   path: '/competitors',
   getParentRoute: () => AppRoute,
 } as any)
+const AppHelpRoute = AppHelpRouteImport.update({
+  id: '/help',
+  path: '/help',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppIntegrationsRoute = AppIntegrationsRouteImport.update({
   id: '/integrations',
   path: '/integrations',
@@ -119,6 +132,11 @@ const AppSearchRoute = AppSearchRouteImport.update({
   path: '/search',
   getParentRoute: () => AppRoute,
 } as any)
+const AppSettingsRoute = AppSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppVideosRoute = AppVideosRouteImport.update({
   id: '/videos',
   path: '/videos',
@@ -133,16 +151,19 @@ export interface FileRoutesByFullPath {
   '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
   '/verify-email': typeof VerifyEmailRoute
+  '/app/admin': typeof AppAdminRoute
   '/app/alerts': typeof AppAlertsRoute
   '/app/api': typeof AppApiRoute
   '/app/automations': typeof AppAutomationsRoute
   '/app/billing': typeof AppBillingRoute
   '/app/channels': typeof AppChannelsRoute
   '/app/competitors': typeof AppCompetitorsRoute
+  '/app/help': typeof AppHelpRoute
   '/app/integrations': typeof AppIntegrationsRoute
   '/app/knowledge': typeof AppKnowledgeRoute
   '/app/reports': typeof AppReportsRoute
   '/app/search': typeof AppSearchRoute
+  '/app/settings': typeof AppSettingsRoute
   '/app/videos': typeof AppVideosRoute
   '/app/': typeof AppIndexRoute
 }
@@ -153,16 +174,19 @@ export interface FileRoutesByTo {
   '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
   '/verify-email': typeof VerifyEmailRoute
+  '/app/admin': typeof AppAdminRoute
   '/app/alerts': typeof AppAlertsRoute
   '/app/api': typeof AppApiRoute
   '/app/automations': typeof AppAutomationsRoute
   '/app/billing': typeof AppBillingRoute
   '/app/channels': typeof AppChannelsRoute
   '/app/competitors': typeof AppCompetitorsRoute
+  '/app/help': typeof AppHelpRoute
   '/app/integrations': typeof AppIntegrationsRoute
   '/app/knowledge': typeof AppKnowledgeRoute
   '/app/reports': typeof AppReportsRoute
   '/app/search': typeof AppSearchRoute
+  '/app/settings': typeof AppSettingsRoute
   '/app/videos': typeof AppVideosRoute
   '/app': typeof AppIndexRoute
 }
@@ -175,16 +199,19 @@ export interface FileRoutesById {
   '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
   '/verify-email': typeof VerifyEmailRoute
+  '/app/admin': typeof AppAdminRoute
   '/app/alerts': typeof AppAlertsRoute
   '/app/api': typeof AppApiRoute
   '/app/automations': typeof AppAutomationsRoute
   '/app/billing': typeof AppBillingRoute
   '/app/channels': typeof AppChannelsRoute
   '/app/competitors': typeof AppCompetitorsRoute
+  '/app/help': typeof AppHelpRoute
   '/app/integrations': typeof AppIntegrationsRoute
   '/app/knowledge': typeof AppKnowledgeRoute
   '/app/reports': typeof AppReportsRoute
   '/app/search': typeof AppSearchRoute
+  '/app/settings': typeof AppSettingsRoute
   '/app/videos': typeof AppVideosRoute
   '/app/': typeof AppIndexRoute
 }
@@ -198,16 +225,19 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/signup'
     | '/verify-email'
+    | '/app/admin'
     | '/app/alerts'
     | '/app/api'
     | '/app/automations'
     | '/app/billing'
     | '/app/channels'
     | '/app/competitors'
+    | '/app/help'
     | '/app/integrations'
     | '/app/knowledge'
     | '/app/reports'
     | '/app/search'
+    | '/app/settings'
     | '/app/videos'
     | '/app/'
   fileRoutesByTo: FileRoutesByTo
@@ -218,16 +248,19 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/signup'
     | '/verify-email'
+    | '/app/admin'
     | '/app/alerts'
     | '/app/api'
     | '/app/automations'
     | '/app/billing'
     | '/app/channels'
     | '/app/competitors'
+    | '/app/help'
     | '/app/integrations'
     | '/app/knowledge'
     | '/app/reports'
     | '/app/search'
+    | '/app/settings'
     | '/app/videos'
     | '/app'
   id:
@@ -239,16 +272,19 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/signup'
     | '/verify-email'
+    | '/app/admin'
     | '/app/alerts'
     | '/app/api'
     | '/app/automations'
     | '/app/billing'
     | '/app/channels'
     | '/app/competitors'
+    | '/app/help'
     | '/app/integrations'
     | '/app/knowledge'
     | '/app/reports'
     | '/app/search'
+    | '/app/settings'
     | '/app/videos'
     | '/app/'
   fileRoutesById: FileRoutesById
@@ -321,6 +357,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/admin': {
+      id: '/app/admin'
+      path: '/admin'
+      fullPath: '/app/admin'
+      preLoaderRoute: typeof AppAdminRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/alerts': {
       id: '/app/alerts'
       path: '/alerts'
@@ -363,6 +406,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppCompetitorsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/help': {
+      id: '/app/help'
+      path: '/help'
+      fullPath: '/app/help'
+      preLoaderRoute: typeof AppHelpRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/integrations': {
       id: '/app/integrations'
       path: '/integrations'
@@ -391,6 +441,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppSearchRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/settings': {
+      id: '/app/settings'
+      path: '/settings'
+      fullPath: '/app/settings'
+      preLoaderRoute: typeof AppSettingsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/videos': {
       id: '/app/videos'
       path: '/videos'
@@ -402,31 +459,37 @@ declare module '@tanstack/react-router' {
 }
 
 interface AppRouteChildren {
+  AppAdminRoute: typeof AppAdminRoute
   AppAlertsRoute: typeof AppAlertsRoute
   AppApiRoute: typeof AppApiRoute
   AppAutomationsRoute: typeof AppAutomationsRoute
   AppBillingRoute: typeof AppBillingRoute
   AppChannelsRoute: typeof AppChannelsRoute
   AppCompetitorsRoute: typeof AppCompetitorsRoute
+  AppHelpRoute: typeof AppHelpRoute
   AppIntegrationsRoute: typeof AppIntegrationsRoute
   AppKnowledgeRoute: typeof AppKnowledgeRoute
   AppReportsRoute: typeof AppReportsRoute
   AppSearchRoute: typeof AppSearchRoute
+  AppSettingsRoute: typeof AppSettingsRoute
   AppVideosRoute: typeof AppVideosRoute
   AppIndexRoute: typeof AppIndexRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppAdminRoute: AppAdminRoute,
   AppAlertsRoute: AppAlertsRoute,
   AppApiRoute: AppApiRoute,
   AppAutomationsRoute: AppAutomationsRoute,
   AppBillingRoute: AppBillingRoute,
   AppChannelsRoute: AppChannelsRoute,
   AppCompetitorsRoute: AppCompetitorsRoute,
+  AppHelpRoute: AppHelpRoute,
   AppIntegrationsRoute: AppIntegrationsRoute,
   AppKnowledgeRoute: AppKnowledgeRoute,
   AppReportsRoute: AppReportsRoute,
   AppSearchRoute: AppSearchRoute,
+  AppSettingsRoute: AppSettingsRoute,
   AppVideosRoute: AppVideosRoute,
   AppIndexRoute: AppIndexRoute,
 }

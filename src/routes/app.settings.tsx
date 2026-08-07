@@ -41,7 +41,7 @@ const NOTIFICATIONS = [
 ];
 
 function SettingsPage() {
-  const { theme, setTheme } = useTheme();
+  const { theme, toggle } = useTheme();
 
   return (
     <div className="space-y-6">
@@ -176,7 +176,9 @@ function SettingsPage() {
                   variant={theme === t ? "hero" : "outline"}
                   size="sm"
                   className="capitalize"
-                  onClick={() => setTheme(t)}
+                  onClick={() => {
+                    if (theme !== t) toggle();
+                  }}
                 >
                   {t}
                 </Button>
